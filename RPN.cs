@@ -18,7 +18,7 @@ namespace FlickCalc {
     Regex regex_;
     /// summary   : コンストラクタ
     public RPN() {
-      regex_ = new Regex(@"([\+\-\*/=])");
+      regex_ = new Regex(@"([+\-*/=()])");
     }
 
 
@@ -27,9 +27,16 @@ namespace FlickCalc {
       var token = Regex.Split(_formula, regex_.ToString());
 
       foreach(var t in token) {
+        if(t.Equals("")) {
+          continue;
+        }
         if(Regex.IsMatch(t, regex_.ToString())) {
           var priority = 0;
-          if(t.Equals("*") | t.Equals("/")) {
+          if(t.Equals("(") | t.Equals(")")) {
+            priority = 4;
+          } else if(t.Equals("/")) {
+            priority = 3;
+          } else if(t.Equals("*")) {
             priority = 2;
           } else {
             priority = 1;
@@ -44,22 +51,35 @@ namespace FlickCalc {
 
     private IEnumerable<Token> Convert(IEnumerable<Token> _token) {
       var converted = new List<Token>();
-      var opStack = new List<Token>();
+      var opStack = new List<List<Token>>();
+      opStack.Add(new List<Token>());
+
+      var quoted = 0;
+
       foreach(var t in _token) {
         if(t.kind_ == Token.Kind.Number) {
           converted.Add(t);
         } else {
-          while(opStack.Count() != 0 && t.priority_ <= opStack.Last().priority_) {
-            converted.Add(opStack.Last());
-            opStack.RemoveAt(opStack.Count() - 1);
-          }
-          opStack.Add(t);
+          if(t.value_.Equals("(")) {
+            quoted++;
+            opStack.Add(new List<Token>());
+          } else if(t.value_.Equals(")")) {
+            opStack[quoted].Reverse();
+            converted.AddRange(opStack[quoted]);
+            quoted--;
+          } else {
+            while(opStack[quoted].Count() != 0 && t.priority_ <= opStack[quoted].Last().priority_) {
+              converted.Add(opStack[quoted].Last());
+              opStack[quoted].RemoveAt(opStack[quoted].Count() - 1);
+            }
 
+            opStack[quoted].Add(t);
+          }
         }
       }
 
-      opStack.Reverse();
-      converted.AddRange(opStack);
+      opStack[0].Reverse();
+      converted.AddRange(opStack[0]);
 
       return converted;
     }
