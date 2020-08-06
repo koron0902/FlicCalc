@@ -205,6 +205,31 @@ namespace FlickCalc.Droid.Calc {
           break;
         }
       };
+
+
+
+    enum AREA {
+      CENTER,
+      RIGHT,
+      LEFT,
+      TOP,
+      BOTTOM
+    }
+
+    AREA SelectetArea(float _startX, float _startY, float _nowX, float _nowY, float _rectSize) {
+      var diffX = _nowX - _startX;
+      var diffY = _nowY - _startY;
+      if(diffX > _rectSize && _nowY > _startX - diffX && _nowY < _startX + diffX) {
+        return AREA.RIGHT;
+      } else if(diffX < -_rectSize && _nowY > _startX + diffX && _nowY < _startX - diffX) {
+        return AREA.LEFT;
+      } else if(diffY > _rectSize && _nowX < _startY + diffY && _nowX > _startY - diffY) {
+        return AREA.BOTTOM;
+      } else if(diffY < -_rectSize && _nowX > _startY + diffY && _nowX < _startY - diffY) {
+        return AREA.TOP;
+      }
+
+      return AREA.CENTER;
     }
   }
 }
