@@ -40,6 +40,7 @@ namespace FlickCalc.Droid.Calc {
       float startX = 0, startY = 0;
       string selected = "0";
       var formula = FindViewById<TextView>(Resource.Id.formula);
+      #region 数値ボタン0~4の設定
       FindViewById<ImageButton>(Resource.Id.button0_4).Touch += (sender, e) => {
         switch(e.Event.Action) {
         case MotionEventActions.Down:
@@ -76,9 +77,9 @@ namespace FlickCalc.Droid.Calc {
           break;
         }
       };
+      #endregion
 
-
-
+      #region 数値ボタン5~9の設定
       FindViewById<ImageButton>(Resource.Id.button5_9).Touch += (sender, e) => {
         switch(e.Event.Action) {
         case MotionEventActions.Down:
@@ -115,7 +116,9 @@ namespace FlickCalc.Droid.Calc {
           break;
         }
       };
+      #endregion
 
+      #region  オペレータボタンの設定
       FindViewById<ImageButton>(Resource.Id.buttonop).Touch += (sender, e) => {
         switch(e.Event.Action) {
         case MotionEventActions.Down:
@@ -161,7 +164,9 @@ namespace FlickCalc.Droid.Calc {
           break;
         }
       };
+      #endregion
 
+      #region オペレータボタン(=とか)の設定
       FindViewById<ImageButton>(Resource.Id.buttonop2).Touch += (sender, e) => {
         switch(e.Event.Action) {
         case MotionEventActions.Down:
@@ -206,6 +211,9 @@ namespace FlickCalc.Droid.Calc {
           break;
         }
       };
+      #endregion
+    }
+
 
 
 
