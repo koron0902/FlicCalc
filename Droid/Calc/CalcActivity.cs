@@ -49,25 +49,24 @@ namespace FlickCalc.Droid.Calc {
           selected = "0";
           break;
         case MotionEventActions.Move:
-          var X = e.Event.GetX();
-          var Y = e.Event.GetY();
-          var diffX = X - startX;
-          var diffY = Y - startY;
-
-          if(diffX < 100 && diffX > -100 && diffY < 100 && diffY > -100) {
+          var area = AreaDetect(startX, startY, e.Event.GetX(), e.Event.GetY(), 100);
+          switch(area) {
+          case AREA.CENTER:
             selected = "0";
-          } else {
-            if(diffX > 100 && Y > startX - diffX && Y < startX + diffX) {
-              selected = "3";
-            } else if(diffX < -100 && Y > startX + diffX && Y < startX - diffX) {
-              selected = "1";
-            } else if(diffY > 100 && X < startY + diffY && X > startY - diffY) {
-              selected = "2";
-            } else if(diffY < -100 && X > startY + diffY && X < startY - diffY) {
-              selected = "4";
-            }
+            break;
+          case AREA.LEFT:
+            selected = "1";
+            break;
+          case AREA.BOTTOM:
+            selected = "2";
+            break;
+          case AREA.RIGHT:
+            selected = "3";
+            break;
+          case AREA.TOP:
+            selected = "4";
+            break;
           }
-          Android.Util.Log.Debug("diff", $"{diffX}, {diffY}");
           aaa.Text = selected;
           break;
         case MotionEventActions.Up:
@@ -89,25 +88,24 @@ namespace FlickCalc.Droid.Calc {
           selected = "5";
           break;
         case MotionEventActions.Move:
-          var X = e.Event.GetX();
-          var Y = e.Event.GetY();
-          var diffX = X - startX;
-          var diffY = Y - startY;
-
-          if(diffX < 100 && diffX > -100 && diffY < 100 && diffY > -100) {
+          var area = AreaDetect(startX, startY, e.Event.GetX(), e.Event.GetY(), 100);
+          switch(area) {
+          case AREA.CENTER:
             selected = "5";
-          } else {
-            if(diffX > 100 && Y > startX - diffX && Y < startX + diffX) {
-              selected = "8";
-            } else if(diffX < -100 && Y > startX + diffX && Y < startX - diffX) {
-              selected = "6";
-            } else if(diffY > 100 && X < startY + diffY && X > startY - diffY) {
-              selected = "7";
-            } else if(diffY < -100 && X > startY + diffY && X < startY - diffY) {
-              selected = "9";
-            }
+            break;
+          case AREA.LEFT:
+            selected = "6";
+            break;
+          case AREA.BOTTOM:
+            selected = "7";
+            break;
+          case AREA.RIGHT:
+            selected = "8";
+            break;
+          case AREA.TOP:
+            selected = "9";
+            break;
           }
-          Android.Util.Log.Debug("diff", $"{diffX}, {diffY}");
           aaa.Text = selected;
           break;
         case MotionEventActions.Up:
@@ -127,25 +125,24 @@ namespace FlickCalc.Droid.Calc {
           selected = "+";
           break;
         case MotionEventActions.Move:
-          var X = e.Event.GetX();
-          var Y = e.Event.GetY();
-          var diffX = X - startX;
-          var diffY = Y - startY;
-
-          if(diffX < 100 && diffX > -100 && diffY < 100 && diffY > -100) {
+          var area = AreaDetect(startX, startY, e.Event.GetX(), e.Event.GetY(), 100);
+          switch(area) {
+          case AREA.CENTER:
             selected = "+";
-          } else {
-            if(diffX > 100 && Y > startX - diffX && Y < startX + diffX) {
-              selected = "*";
-            } else if(diffX < -100 && Y > startX + diffX && Y < startX - diffX) {
-              selected = "-";
-            } else if(diffY > 100 && X < startY + diffY && X > startY - diffY) {
-              selected = ".";
-            } else if(diffY < -100 && X > startY + diffY && X < startY - diffY) {
-              selected = "/";
-            }
+            break;
+          case AREA.LEFT:
+            selected = "-";
+            break;
+          case AREA.BOTTOM:
+            selected = ".";
+            break;
+          case AREA.RIGHT:
+            selected = "*";
+            break;
+          case AREA.TOP:
+            selected = "/";
+            break;
           }
-          Android.Util.Log.Debug("diff", $"{diffX}, {diffY}");
           aaa.Text = selected;
           break;
         case MotionEventActions.Up:
@@ -174,25 +171,24 @@ namespace FlickCalc.Droid.Calc {
           selected = "X";
           break;
         case MotionEventActions.Move:
-          var X = e.Event.GetX();
-          var Y = e.Event.GetY();
-          var diffX = X - startX;
-          var diffY = Y - startY;
-
-          if(diffX < 100 && diffX > -100 && diffY < 100 && diffY > -100) {
+          var area = AreaDetect(startX, startY, e.Event.GetX(), e.Event.GetY(), 100);
+          switch(area) {
+          case AREA.CENTER:
             selected = "X";
-          } else {
-            if(diffX > 100 && Y > startX - diffX && Y < startX + diffX) {
-              selected = "C";
-            } else if(diffX < -100 && Y > startX + diffX && Y < startX - diffX) {
-              selected = "AC";
-            } else if(diffY > 100 && X < startY + diffY && X > startY - diffY) {
-              selected = "=";
-            } else if(diffY < -100 && X > startY + diffY && X < startY - diffY) {
-              selected = "↑";
-            }
+            break;
+          case AREA.LEFT:
+            selected = "AC";
+            break;
+          case AREA.BOTTOM:
+            selected = "=";
+            break;
+          case AREA.RIGHT:
+            selected = "C";
+            break;
+          case AREA.TOP:
+            selected = "↑";
+            break;
           }
-          Android.Util.Log.Debug("diff", $"{diffX}, {diffY}");
           aaa.Text = selected;
           break;
         case MotionEventActions.Up:
@@ -201,6 +197,7 @@ namespace FlickCalc.Droid.Calc {
             RPN rpn = new RPN();
             FindViewById<TextView>(Resource.Id.formula).Text = rpn.Proc(FindViewById<TextView>(Resource.Id.formula).Text);
           } else {
+
           }
           break;
         }
@@ -216,7 +213,7 @@ namespace FlickCalc.Droid.Calc {
       BOTTOM
     }
 
-    AREA SelectetArea(float _startX, float _startY, float _nowX, float _nowY, float _rectSize) {
+    AREA AreaDetect(float _startX, float _startY, float _nowX, float _nowY, float _rectSize) {
       var diffX = _nowX - _startX;
       var diffY = _nowY - _startY;
       if(diffX > _rectSize && _nowY > _startX - diffX && _nowY < _startX + diffX) {
