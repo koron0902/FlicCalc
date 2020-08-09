@@ -39,6 +39,7 @@ namespace FlickCalc.Droid.Calc {
 
       float startX = 0, startY = 0;
       string selected = "0";
+      var formula = FindViewById<TextView>(Resource.Id.formula);
       FindViewById<ImageButton>(Resource.Id.button0_4).Touch += (sender, e) => {
         switch(e.Event.Action) {
         case MotionEventActions.Down:
@@ -71,7 +72,7 @@ namespace FlickCalc.Droid.Calc {
           break;
         case MotionEventActions.Up:
           GetSystemService(WindowService).JavaCast<IWindowManager>().RemoveView(layout);
-          FindViewById<TextView>(Resource.Id.formula).Text += selected;
+          formula.Text += selected;
           break;
         }
       };
@@ -110,7 +111,7 @@ namespace FlickCalc.Droid.Calc {
           break;
         case MotionEventActions.Up:
           GetSystemService(WindowService).JavaCast<IWindowManager>().RemoveView(layout);
-          FindViewById<TextView>(Resource.Id.formula).Text += selected;
+          formula.Text += selected;
           break;
         }
       };
@@ -153,7 +154,7 @@ namespace FlickCalc.Droid.Calc {
           FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('/') |
           FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('*') |
           FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('.')) {
-            FindViewById<TextView>(Resource.Id.formula).Text = FindViewById<TextView>(Resource.Id.formula).Text.Substring(0, FindViewById<TextView>(Resource.Id.formula).Text.Count() - 1) + selected;
+            formula.Text = formula.Text.Substring(0, formula.Text.Count() - 1) + selected;
           } else {
             FindViewById<TextView>(Resource.Id.formula).Text += selected;
           }
@@ -195,7 +196,10 @@ namespace FlickCalc.Droid.Calc {
           GetSystemService(WindowService).JavaCast<IWindowManager>().RemoveView(layout);
           if(selected.Equals("=")) {
             RPN rpn = new RPN();
-            FindViewById<TextView>(Resource.Id.formula).Text = rpn.Proc(FindViewById<TextView>(Resource.Id.formula).Text);
+            formula.Text = rpn.Proc(formula.Text);
+          } else if(selected.Equals("X")) {
+            if(formula.Text.Count() > 0)
+              formula.Text = formula.Text.Substring(0, formula.Text.Count() - 1);
           } else {
 
           }
