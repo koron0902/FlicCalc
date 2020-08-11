@@ -4,12 +4,68 @@
 	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	
 	android:id="@+id/root">
-	<Button
-		android:text="Button"
+	<TextView
+		android:text=""
+		android:textSize="20dp"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:minWidth="25px"
-		android:minHeight="25px"
-		android:id="@+id/button1" />
+		android:textAlignment="textStart"
+		android:id="@+id/lastformula"
+		android:hint=""/>
+	<TextView
+		android:text=""
+		android:textSize="32dp"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textAlignment="center"
+		android:gravity="center_horizontal"
+		android:id="@+id/formula"
+		android:hint="数式"/>
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginTop="24.5dp"
+		android:gravity="right|bottom">
+
+
+		<ImageButton
+			android:src="@drawable/num5_9"
+			android:layout_width="100dp"
+			android:layout_height="100dp"
+			android:layout_margin="15dp"
+			android:id="@+id/button5_9"
+			android:contentDescription="" />
+
+		<ImageButton
+			android:src="@drawable/num0_4"
+			android:layout_width="100dp"
+			android:layout_height="100dp"
+			android:layout_margin="15dp"
+			android:id="@+id/button0_4"
+			android:layout_below="@id/button5_9"
+			android:contentDescription="" />
+
+		<ImageButton
+			android:src="@drawable/op2"
+			android:layout_width="100dp"
+			android:layout_height="100dp"
+			android:layout_margin="15dp"
+			android:id="@+id/buttonop2"
+			android:contentDescription=""
+			android:layout_toRightOf="@id/button5_9"
+			/>
+		<ImageButton
+			android:src="@drawable/op"
+			android:layout_width="100dp"
+			android:layout_height="100dp"
+			android:layout_margin="15dp"
+			android:id="@+id/buttonop"
+			android:layout_below="@id/buttonop2"
+			android:layout_toRightOf="@id/button0_4"
+			android:contentDescription="" />
+
+	</RelativeLayout>
+
 </LinearLayout>
