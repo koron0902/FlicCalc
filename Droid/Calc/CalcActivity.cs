@@ -16,11 +16,13 @@ namespace FlickCalc.Droid.Calc {
   [Activity(Label = "CalcActivity", MainLauncher = true)]
   public class CalcActivity : Activity {
     int cnt = 0;
+    List<string> formulaHistory_;
     protected override void OnCreate(Bundle savedInstanceState) {
       base.OnCreate(savedInstanceState);
 
       SetContentView(Resource.Layout.calculator);
       // Create your application here
+      formulaHistory_ = new List<string>();
     }
 
     protected override void OnStart() {
@@ -201,6 +203,8 @@ namespace FlickCalc.Droid.Calc {
           GetSystemService(WindowService).JavaCast<IWindowManager>().RemoveView(layout);
           if(selected.Equals("=")) {
             RPN rpn = new RPN();
+            FindViewById<TextView>(Resource.Id.lastformula).Text = formula.Text + "=";
+            formulaHistory_.Insert(0, formula.Text);
             formula.Text = rpn.Proc(formula.Text);
           } else if(selected.Equals("X")) {
             if(formula.Text.Count() > 0)
