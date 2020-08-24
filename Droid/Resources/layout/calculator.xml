@@ -5,7 +5,6 @@
 	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	
 	android:id="@+id/root">
 
 	<TextView
@@ -71,22 +70,18 @@
 			android:layout_below="@id/buttonop2"
 			android:layout_toRightOf="@id/button0_4"
 			android:contentDescription="" />
-
-
 	</RelativeLayout>
 
 	<com.google.android.gms.ads.AdView
 		android:minWidth="25px"
 		android:minHeight="25px"
-		android:layout_width="match_parent"
+		android:background="@android:color/white"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true"
-		android:layout_centerVertical="true"
-		android:layout_below="@id/Buttons"
+		android:layout_centerHorizontal="true"
 		ads:adSize="BANNER"
 		ads:adUnitId="ca-app-pub-9986685244078667/4193606351"
-		android:id="@+id/adView">
-		
-		
+		android:id="@+id/adView">	
 	</com.google.android.gms.ads.AdView>
 </RelativeLayout>
