@@ -153,15 +153,17 @@ namespace FlickCalc.Droid.Calc {
           break;
         case MotionEventActions.Up:
           GetSystemService(WindowService).JavaCast<IWindowManager>().RemoveView(layout);
-          var a = FindViewById<TextView>(Resource.Id.formula).Text.Last();
-          if(FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('+') |
-          FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('-') |
-          FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('/') |
-          FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('*') |
-          FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('.')) {
-            formula.Text = formula.Text.Substring(0, formula.Text.Count() - 1) + selected;
-          } else {
-            FindViewById<TextView>(Resource.Id.formula).Text += selected;
+          //var a = FindViewById<TextView>(Resource.Id.formula).Text.Last();
+          if(FindViewById<TextView>(Resource.Id.formula).Text.Count() > 0) {
+            if(FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('+') |
+            FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('-') |
+            FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('/') |
+            FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('*') |
+            FindViewById<TextView>(Resource.Id.formula).Text.Last().Equals('.')) {
+              formula.Text = formula.Text.Substring(0, formula.Text.Count() - 1) + selected;
+            } else {
+              FindViewById<TextView>(Resource.Id.formula).Text += selected;
+            }
           }
           break;
         }
@@ -203,9 +205,14 @@ namespace FlickCalc.Droid.Calc {
           GetSystemService(WindowService).JavaCast<IWindowManager>().RemoveView(layout);
           if(selected.Equals("=")) {
             RPN rpn = new RPN();
-            FindViewById<TextView>(Resource.Id.lastformula).Text = formula.Text + "=";
-            formulaHistory_.Insert(0, formula.Text);
-            formula.Text = rpn.Proc(formula.Text);
+            try {
+              var lastFormula = formula.Text;
+              formula.Text = rpn.Proc(formula.Text);
+              FindViewById<TextView>(Resource.Id.lastformula).Text = lastFormula + "=";
+              formulaHistory_.Insert(0, lastFormula);
+            } catch(Exception except) {
+              Toast.MakeText(this, except.Message, ToastLength.Long).Show();
+            }
           } else if(selected.Equals("X")) {
             if(formula.Text.Count() > 0)
               formula.Text = formula.Text.Substring(0, formula.Text.Count() - 1);
