@@ -122,7 +122,7 @@ namespace FlickCalc {
         }
       }
 
-      return stack.Last().ToString();
+      return stack.Last().ToString("#############0.##############");
     }
 
 
