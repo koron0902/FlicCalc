@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "41526966596",
+    "firebase_url": "https://flick-calc.firebaseio.com",
+    "project_id": "flick-calc",
+    "storage_bucket": "flick-calc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41526966596:android:a48962397be555ced5bf11",
+        "android_client_info": {
+          "package_name": "com.milkcocoa.info.flickcalc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41526966596-13s0khqb6uk5g9ruanblve0q0othbn8b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtWZigUM3Co4FdwIFy0imYWBimZcdn7gc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41526966596-13s0khqb6uk5g9ruanblve0q0othbn8b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
