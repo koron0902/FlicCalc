@@ -86,14 +86,26 @@ namespace FlickCalc {
 
     private String Calc(IEnumerable<Token> _token) {
       var stack = new List<double>();
+
       foreach(var t in _token) {
         if(t.kind_ == Token.Kind.Number) {
           stack.Add(double.Parse(t.value_));
         } else {
-          var rhs = stack.Last();
-          stack.RemoveAt(stack.Count() - 1);
-          var lhs = stack.Last();
-          stack.RemoveAt(stack.Count() - 1);
+          var lhs = 0.0;
+          var rhs = 0.0;
+          if(stack.Count() >= 2) {
+            rhs = stack.Last();
+            stack.RemoveAt(stack.Count() - 1);
+            lhs = stack.Last();
+            stack.RemoveAt(stack.Count() - 1);
+          } else if(stack.Count() == 1 && t.value_.Equals("-")) {
+            lhs = 0;
+            rhs = stack.Last();
+            stack.RemoveAt(stack.Count() - 1);
+          } else {
+            throw new Exception("この計算はできません．");
+          }
+
 
           if(t.value_.Equals("+")) {
             stack.Add(lhs + rhs);
@@ -102,6 +114,9 @@ namespace FlickCalc {
           } else if(t.value_.Equals("*")) {
             stack.Add(lhs * rhs);
           } else if(t.value_.Equals("/")) {
+            if(rhs == 0) {
+              throw new Exception("この計算はできません．");
+            }
             stack.Add(lhs / rhs);
           }
         }
