@@ -6,11 +6,13 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Gms.Ads;
 using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using static Java.Interop.JniEnvironment;
 
 namespace FlickCalc.Droid.Calc {
   [Activity(Label = "CalcActivity", MainLauncher = true)]
@@ -23,6 +25,14 @@ namespace FlickCalc.Droid.Calc {
       SetContentView(Resource.Layout.calculator);
       // Create your application here
       formulaHistory_ = new List<string>();
+
+      // Test App ID
+      MobileAds.Initialize(this,
+              "ca-app-pub-9986685244078667~8077011042");
+
+      AdView adView = FindViewById<AdView>(Resource.Id.adView);
+      AdRequest adRequest = new Android.Gms.Ads.AdRequest.Builder().AddTestDevice("92B8012EAE306FF8394406C86DF51797").Build();
+      adView.LoadAd(adRequest);
     }
 
     protected override void OnStart() {
