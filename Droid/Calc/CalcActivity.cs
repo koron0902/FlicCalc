@@ -205,10 +205,11 @@ namespace FlickCalc.Droid.Calc {
           GetSystemService(WindowService).JavaCast<IWindowManager>().RemoveView(layout);
           if(selected.Equals("=")) {
             RPN rpn = new RPN();
-            FindViewById<TextView>(Resource.Id.lastformula).Text = formula.Text + "=";
-            formulaHistory_.Insert(0, formula.Text);
             try {
+              var lastFormula = formula.Text;
               formula.Text = rpn.Proc(formula.Text);
+              FindViewById<TextView>(Resource.Id.lastformula).Text = lastFormula + "=";
+              formulaHistory_.Insert(0, lastFormula);
             } catch(Exception except) {
               Toast.MakeText(this, except.Message, ToastLength.Long).Show();
             }
