@@ -16,7 +16,7 @@ using static Java.Interop.JniEnvironment;
 
 namespace FlickCalc.Droid.Calc {
   [Activity(Label = "CalcActivity", MainLauncher = true)]
-  public class CalcActivity : Activity {
+  public class CalcActivity : Activity, ViewTreeObserver.IOnGlobalLayoutListener {
     int cnt = 0;
     List<string> formulaHistory_;
     protected override void OnCreate(Bundle savedInstanceState) {
@@ -58,7 +58,9 @@ namespace FlickCalc.Droid.Calc {
       #region 数値ボタン0~4の設定
       var button0_4 = FindViewById<ImageButton>(Resource.Id.button0_4);
       var img0_4 = Android.Graphics.BitmapFactory.DecodeResource(Resources, Resource.Drawable.num0_4);
-      button0_4.SetImageBitmap(Bitmap.CreateScaledBitmap(img0_4, 230, 230, true));
+      button0_4.ViewTreeObserver.GlobalLayout += (sender, e) => {
+        button0_4.SetImageBitmap(Bitmap.CreateScaledBitmap(img0_4, button0_4.Width, button0_4.Height, true));
+      };
 
       button0_4.Touch += (sender, e) => {
         switch(e.Event.Action) {
@@ -101,7 +103,9 @@ namespace FlickCalc.Droid.Calc {
       #region 数値ボタン5~9の設定
       var button5_9 = FindViewById<ImageButton>(Resource.Id.button5_9);
       var img5_9 = Android.Graphics.BitmapFactory.DecodeResource(Resources, Resource.Drawable.num5_9);
-      button5_9.SetImageBitmap(Bitmap.CreateScaledBitmap(img5_9, 230, 230, true));
+      button5_9.ViewTreeObserver.GlobalLayout += (sender, e) => {
+        button5_9.SetImageBitmap(Bitmap.CreateScaledBitmap(img5_9, button5_9.Width, button5_9.Height, true));
+      };
       button5_9.Touch += (sender, e) => {
         switch(e.Event.Action) {
         case MotionEventActions.Down:
@@ -143,7 +147,9 @@ namespace FlickCalc.Droid.Calc {
       #region  オペレータボタンの設定
       var buttonop = FindViewById<ImageButton>(Resource.Id.buttonop);
       var imgop = Android.Graphics.BitmapFactory.DecodeResource(Resources, Resource.Drawable.op);
-      buttonop.SetImageBitmap(Bitmap.CreateScaledBitmap(imgop, 230, 230, true));
+      buttonop.ViewTreeObserver.GlobalLayout += (sender, e) => {
+        buttonop.SetImageBitmap(Bitmap.CreateScaledBitmap(imgop, buttonop.Width, buttonop.Height, true));
+      };
       buttonop.Touch += (sender, e) => {
         switch(e.Event.Action) {
         case MotionEventActions.Down:
@@ -196,7 +202,9 @@ namespace FlickCalc.Droid.Calc {
       #region オペレータボタン(=とか)の設定
       var buttonop2 = FindViewById<ImageButton>(Resource.Id.buttonop2);
       var imgop2 = Android.Graphics.BitmapFactory.DecodeResource(Resources, Resource.Drawable.op2);
-      buttonop2.SetImageBitmap(Bitmap.CreateScaledBitmap(imgop2, 230, 230, true));
+      buttonop2.ViewTreeObserver.GlobalLayout += (sender, e) => {
+        buttonop2.SetImageBitmap(Bitmap.CreateScaledBitmap(imgop2, buttonop2.Width, buttonop2.Height, true));
+      };
       buttonop2.Touch += (sender, e) => {
         switch(e.Event.Action) {
         case MotionEventActions.Down:
@@ -277,6 +285,10 @@ namespace FlickCalc.Droid.Calc {
       }
 
       return AREA.CENTER;
+    }
+
+    public void OnGlobalLayout() {
+      throw new NotImplementedException();
     }
   }
 }
