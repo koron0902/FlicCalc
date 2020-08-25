@@ -56,7 +56,11 @@ namespace FlickCalc.Droid.Calc {
       string selected = "0";
       var formula = FindViewById<TextView>(Resource.Id.formula);
       #region 数値ボタン0~4の設定
-      FindViewById<ImageButton>(Resource.Id.button0_4).Touch += (sender, e) => {
+      var button0_4 = FindViewById<ImageButton>(Resource.Id.button0_4);
+      var img0_4 = Android.Graphics.BitmapFactory.DecodeResource(Resources, Resource.Drawable.num0_4);
+      button0_4.SetImageBitmap(Bitmap.CreateScaledBitmap(img0_4, 230, 230, true));
+
+      button0_4.Touch += (sender, e) => {
         switch(e.Event.Action) {
         case MotionEventActions.Down:
           GetSystemService(WindowService).JavaCast<IWindowManager>().AddView(layout, param);
@@ -95,7 +99,10 @@ namespace FlickCalc.Droid.Calc {
       #endregion
 
       #region 数値ボタン5~9の設定
-      FindViewById<ImageButton>(Resource.Id.button5_9).Touch += (sender, e) => {
+      var button5_9 = FindViewById<ImageButton>(Resource.Id.button5_9);
+      var img5_9 = Android.Graphics.BitmapFactory.DecodeResource(Resources, Resource.Drawable.num5_9);
+      button5_9.SetImageBitmap(Bitmap.CreateScaledBitmap(img5_9, 230, 230, true));
+      button5_9.Touch += (sender, e) => {
         switch(e.Event.Action) {
         case MotionEventActions.Down:
           GetSystemService(WindowService).JavaCast<IWindowManager>().AddView(layout, param);
@@ -134,7 +141,10 @@ namespace FlickCalc.Droid.Calc {
       #endregion
 
       #region  オペレータボタンの設定
-      FindViewById<ImageButton>(Resource.Id.buttonop).Touch += (sender, e) => {
+      var buttonop = FindViewById<ImageButton>(Resource.Id.buttonop);
+      var imgop = Android.Graphics.BitmapFactory.DecodeResource(Resources, Resource.Drawable.op);
+      buttonop.SetImageBitmap(Bitmap.CreateScaledBitmap(imgop, 230, 230, true));
+      buttonop.Touch += (sender, e) => {
         switch(e.Event.Action) {
         case MotionEventActions.Down:
           GetSystemService(WindowService).JavaCast<IWindowManager>().AddView(layout, param);
@@ -184,7 +194,10 @@ namespace FlickCalc.Droid.Calc {
       #endregion
 
       #region オペレータボタン(=とか)の設定
-      FindViewById<ImageButton>(Resource.Id.buttonop2).Touch += (sender, e) => {
+      var buttonop2 = FindViewById<ImageButton>(Resource.Id.buttonop2);
+      var imgop2 = Android.Graphics.BitmapFactory.DecodeResource(Resources, Resource.Drawable.op2);
+      buttonop2.SetImageBitmap(Bitmap.CreateScaledBitmap(imgop2, 230, 230, true));
+      buttonop2.Touch += (sender, e) => {
         switch(e.Event.Action) {
         case MotionEventActions.Down:
           GetSystemService(WindowService).JavaCast<IWindowManager>().AddView(layout, param);
