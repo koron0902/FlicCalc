@@ -259,52 +259,109 @@ namespace FlickCalc.Droid
 		{
 			
 			// aapt resource value: 0x7F040000
-			public const int notification_action_background = 2130968576;
+			public const int 0 = 2130968576;
 			
 			// aapt resource value: 0x7F040001
-			public const int notification_bg = 2130968577;
+			public const int 1 = 2130968577;
 			
 			// aapt resource value: 0x7F040002
-			public const int notification_bg_low = 2130968578;
+			public const int 2 = 2130968578;
 			
 			// aapt resource value: 0x7F040003
-			public const int notification_bg_low_normal = 2130968579;
+			public const int 3 = 2130968579;
 			
 			// aapt resource value: 0x7F040004
-			public const int notification_bg_low_pressed = 2130968580;
+			public const int 4 = 2130968580;
 			
 			// aapt resource value: 0x7F040005
-			public const int notification_bg_normal = 2130968581;
+			public const int 5 = 2130968581;
 			
 			// aapt resource value: 0x7F040006
-			public const int notification_bg_normal_pressed = 2130968582;
+			public const int 6 = 2130968582;
 			
 			// aapt resource value: 0x7F040007
-			public const int notification_icon_background = 2130968583;
+			public const int 7 = 2130968583;
 			
 			// aapt resource value: 0x7F040008
-			public const int notification_template_icon_bg = 2130968584;
+			public const int 8 = 2130968584;
 			
 			// aapt resource value: 0x7F040009
-			public const int notification_template_icon_low_bg = 2130968585;
+			public const int 9 = 2130968585;
 			
 			// aapt resource value: 0x7F04000A
-			public const int notification_tile_bg = 2130968586;
+			public const int add = 2130968586;
 			
 			// aapt resource value: 0x7F04000B
-			public const int notify_panel_notification_icon_bg = 2130968587;
+			public const int allClear = 2130968587;
 			
 			// aapt resource value: 0x7F04000C
-			public const int num0_4 = 2130968588;
+			public const int Clear = 2130968588;
 			
 			// aapt resource value: 0x7F04000D
-			public const int num5_9 = 2130968589;
+			public const int delete = 2130968589;
 			
 			// aapt resource value: 0x7F04000E
-			public const int op = 2130968590;
+			public const int div = 2130968590;
 			
 			// aapt resource value: 0x7F04000F
-			public const int op2 = 2130968591;
+			public const int dot = 2130968591;
+			
+			// aapt resource value: 0x7F040010
+			public const int equal = 2130968592;
+			
+			// aapt resource value: 0x7F040011
+			public const int minus = 2130968593;
+			
+			// aapt resource value: 0x7F040012
+			public const int mul = 2130968594;
+			
+			// aapt resource value: 0x7F040013
+			public const int notification_action_background = 2130968595;
+			
+			// aapt resource value: 0x7F040014
+			public const int notification_bg = 2130968596;
+			
+			// aapt resource value: 0x7F040015
+			public const int notification_bg_low = 2130968597;
+			
+			// aapt resource value: 0x7F040016
+			public const int notification_bg_low_normal = 2130968598;
+			
+			// aapt resource value: 0x7F040017
+			public const int notification_bg_low_pressed = 2130968599;
+			
+			// aapt resource value: 0x7F040018
+			public const int notification_bg_normal = 2130968600;
+			
+			// aapt resource value: 0x7F040019
+			public const int notification_bg_normal_pressed = 2130968601;
+			
+			// aapt resource value: 0x7F04001A
+			public const int notification_icon_background = 2130968602;
+			
+			// aapt resource value: 0x7F04001B
+			public const int notification_template_icon_bg = 2130968603;
+			
+			// aapt resource value: 0x7F04001C
+			public const int notification_template_icon_low_bg = 2130968604;
+			
+			// aapt resource value: 0x7F04001D
+			public const int notification_tile_bg = 2130968605;
+			
+			// aapt resource value: 0x7F04001E
+			public const int notify_panel_notification_icon_bg = 2130968606;
+			
+			// aapt resource value: 0x7F04001F
+			public const int num0_4 = 2130968607;
+			
+			// aapt resource value: 0x7F040020
+			public const int num5_9 = 2130968608;
+			
+			// aapt resource value: 0x7F040021
+			public const int op = 2130968609;
+			
+			// aapt resource value: 0x7F040022
+			public const int op2 = 2130968610;
 			
 			static Drawable()
 			{
