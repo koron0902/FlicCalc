@@ -50,10 +50,11 @@ namespace FlickCalc.Droid.Calc {
 
 
       var layout = LayoutInflater.Inflate(Resource.Layout.test, null);
-      var aaa = layout.FindViewById<TextView>(Resource.Id.textView1);
+      var aaa = layout.FindViewById<ImageView>(Resource.Id.selectedButton);
 
       float startX = 0, startY = 0;
-      string selected = "0";
+      var selectedButton = Resource.Drawable.ic_0;
+      var selected = "0";
       var formula = FindViewById<TextView>(Resource.Id.formula);
       #region 数値ボタン0~4の設定
       var button0_4 = FindViewById<ImageButton>(Resource.Id.button0_4);
@@ -68,33 +69,41 @@ namespace FlickCalc.Droid.Calc {
           GetSystemService(WindowService).JavaCast<IWindowManager>().AddView(layout, param);
           startX = e.Event.GetX();
           startY = e.Event.GetY();
-          aaa.Text = "0";
-          selected = "0";
+          aaa.SetImageResource(Resource.Drawable.ic_0);
+          selectedButton = Resource.Drawable.ic_0;
           break;
         case MotionEventActions.Move:
           var area = AreaDetect(startX, startY, e.Event.GetX(), e.Event.GetY(), 100);
           switch(area) {
           case AREA.CENTER:
             selected = "0";
+            selectedButton = Resource.Drawable.ic_0;
             break;
           case AREA.LEFT:
             selected = "1";
+            selectedButton = Resource.Drawable.ic_1;
             break;
           case AREA.BOTTOM:
             selected = "2";
+            selectedButton = Resource.Drawable.ic_2;
             break;
           case AREA.RIGHT:
             selected = "3";
+            selectedButton = Resource.Drawable.ic_3;
             break;
           case AREA.TOP:
             selected = "4";
+            selectedButton = Resource.Drawable.ic_4;
             break;
           }
-          aaa.Text = selected;
+          aaa.SetImageResource(selectedButton);
           break;
         case MotionEventActions.Up:
           GetSystemService(WindowService).JavaCast<IWindowManager>().RemoveView(layout);
           formula.Text += selected;
+          break;
+        case MotionEventActions.Cancel:
+          Toast.MakeText(this, "Canceled!!!!!", ToastLength.Short).Show();
           break;
         }
       };
@@ -112,7 +121,8 @@ namespace FlickCalc.Droid.Calc {
           GetSystemService(WindowService).JavaCast<IWindowManager>().AddView(layout, param);
           startX = e.Event.GetX();
           startY = e.Event.GetY();
-          aaa.Text = "5";
+          aaa.SetImageResource(Resource.Drawable.ic_5);
+          selectedButton = Resource.Drawable.ic_5;
           selected = "5";
           break;
         case MotionEventActions.Move:
@@ -120,21 +130,26 @@ namespace FlickCalc.Droid.Calc {
           switch(area) {
           case AREA.CENTER:
             selected = "5";
+            selectedButton = Resource.Drawable.ic_5;
             break;
           case AREA.LEFT:
             selected = "6";
+            selectedButton = Resource.Drawable.ic_6;
             break;
           case AREA.BOTTOM:
             selected = "7";
+            selectedButton = Resource.Drawable.ic_7;
             break;
           case AREA.RIGHT:
             selected = "8";
+            selectedButton = Resource.Drawable.ic_8;
             break;
           case AREA.TOP:
             selected = "9";
+            selectedButton = Resource.Drawable.ic_9;
             break;
           }
-          aaa.Text = selected;
+          aaa.SetImageResource(selectedButton);
           break;
         case MotionEventActions.Up:
           GetSystemService(WindowService).JavaCast<IWindowManager>().RemoveView(layout);
@@ -156,7 +171,8 @@ namespace FlickCalc.Droid.Calc {
           GetSystemService(WindowService).JavaCast<IWindowManager>().AddView(layout, param);
           startX = e.Event.GetX();
           startY = e.Event.GetY();
-          aaa.Text = "+";
+          aaa.SetImageResource(Resource.Drawable.add);
+          selectedButton = Resource.Drawable.add;
           selected = "+";
           break;
         case MotionEventActions.Move:
@@ -164,21 +180,26 @@ namespace FlickCalc.Droid.Calc {
           switch(area) {
           case AREA.CENTER:
             selected = "+";
+            selectedButton = Resource.Drawable.add;
             break;
           case AREA.LEFT:
             selected = "-";
+            selectedButton = Resource.Drawable.minus;
             break;
           case AREA.BOTTOM:
             selected = ".";
+            selectedButton = Resource.Drawable.dot;
             break;
           case AREA.RIGHT:
             selected = "*";
+            selectedButton = Resource.Drawable.mul;
             break;
           case AREA.TOP:
             selected = "/";
+            selectedButton = Resource.Drawable.div;
             break;
           }
-          aaa.Text = selected;
+          aaa.SetImageResource(selectedButton);
           break;
         case MotionEventActions.Up:
           GetSystemService(WindowService).JavaCast<IWindowManager>().RemoveView(layout);
@@ -211,33 +232,33 @@ namespace FlickCalc.Droid.Calc {
           GetSystemService(WindowService).JavaCast<IWindowManager>().AddView(layout, param);
           startX = e.Event.GetX();
           startY = e.Event.GetY();
-          aaa.Text = "X";
-          selected = "X";
+          aaa.SetImageResource(Resource.Drawable.equal);
+          selectedButton = Resource.Drawable.equal;
           break;
         case MotionEventActions.Move:
           var area = AreaDetect(startX, startY, e.Event.GetX(), e.Event.GetY(), 100);
           switch(area) {
           case AREA.CENTER:
-            selected = "X";
+            selectedButton = Resource.Drawable.delete;
             break;
           case AREA.LEFT:
-            selected = "AC";
+            selectedButton = Resource.Drawable.allClear;
             break;
           case AREA.BOTTOM:
-            selected = "=";
+            selectedButton = Resource.Drawable.equal;
             break;
           case AREA.RIGHT:
-            selected = "C";
+            selectedButton = Resource.Drawable.Clear;
             break;
           case AREA.TOP:
-            selected = "↑";
+            selectedButton = Resource.Drawable.num0_4;
             break;
           }
-          aaa.Text = selected;
+          aaa.SetImageResource(selectedButton);
           break;
         case MotionEventActions.Up:
           GetSystemService(WindowService).JavaCast<IWindowManager>().RemoveView(layout);
-          if(selected.Equals("=")) {
+          if(selectedButton == Resource.Drawable.equal) {
             RPN rpn = new RPN();
             try {
               var lastFormula = formula.Text;
@@ -247,7 +268,7 @@ namespace FlickCalc.Droid.Calc {
             } catch(Exception except) {
               Toast.MakeText(this, except.Message, ToastLength.Long).Show();
             }
-          } else if(selected.Equals("X")) {
+          } else if(selectedButton == Resource.Drawable.delete) {
             if(formula.Text.Count() > 0)
               formula.Text = formula.Text.Substring(0, formula.Text.Count() - 1);
           } else {
