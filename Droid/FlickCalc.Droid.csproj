@@ -210,43 +210,43 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\0.png">
+    <AndroidResource Include="Resources\drawable\ic_0.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\1.png">
+    <AndroidResource Include="Resources\drawable\ic_1.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\2.png">
+    <AndroidResource Include="Resources\drawable\ic_2.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\3.png">
+    <AndroidResource Include="Resources\drawable\ic_3.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\4.png">
+    <AndroidResource Include="Resources\drawable\ic_4.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\5.png">
+    <AndroidResource Include="Resources\drawable\ic_5.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\6.png">
+    <AndroidResource Include="Resources\drawable\ic_6.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\7.png">
+    <AndroidResource Include="Resources\drawable\ic_7.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\8.png">
+    <AndroidResource Include="Resources\drawable\ic_8.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\9.png">
+    <AndroidResource Include="Resources\drawable\ic_9.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>

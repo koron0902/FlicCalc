@@ -259,55 +259,55 @@ namespace FlickCalc.Droid
 		{
 			
 			// aapt resource value: 0x7F040000
-			public const int 0 = 2130968576;
+			public const int add = 2130968576;
 			
 			// aapt resource value: 0x7F040001
-			public const int 1 = 2130968577;
+			public const int allClear = 2130968577;
 			
 			// aapt resource value: 0x7F040002
-			public const int 2 = 2130968578;
+			public const int Clear = 2130968578;
 			
 			// aapt resource value: 0x7F040003
-			public const int 3 = 2130968579;
+			public const int delete = 2130968579;
 			
 			// aapt resource value: 0x7F040004
-			public const int 4 = 2130968580;
+			public const int div = 2130968580;
 			
 			// aapt resource value: 0x7F040005
-			public const int 5 = 2130968581;
+			public const int dot = 2130968581;
 			
 			// aapt resource value: 0x7F040006
-			public const int 6 = 2130968582;
+			public const int equal = 2130968582;
 			
 			// aapt resource value: 0x7F040007
-			public const int 7 = 2130968583;
+			public const int ic_0 = 2130968583;
 			
 			// aapt resource value: 0x7F040008
-			public const int 8 = 2130968584;
+			public const int ic_1 = 2130968584;
 			
 			// aapt resource value: 0x7F040009
-			public const int 9 = 2130968585;
+			public const int ic_2 = 2130968585;
 			
 			// aapt resource value: 0x7F04000A
-			public const int add = 2130968586;
+			public const int ic_3 = 2130968586;
 			
 			// aapt resource value: 0x7F04000B
-			public const int allClear = 2130968587;
+			public const int ic_4 = 2130968587;
 			
 			// aapt resource value: 0x7F04000C
-			public const int Clear = 2130968588;
+			public const int ic_5 = 2130968588;
 			
 			// aapt resource value: 0x7F04000D
-			public const int delete = 2130968589;
+			public const int ic_6 = 2130968589;
 			
 			// aapt resource value: 0x7F04000E
-			public const int div = 2130968590;
+			public const int ic_7 = 2130968590;
 			
 			// aapt resource value: 0x7F04000F
-			public const int dot = 2130968591;
+			public const int ic_8 = 2130968591;
 			
 			// aapt resource value: 0x7F040010
-			public const int equal = 2130968592;
+			public const int ic_9 = 2130968592;
 			
 			// aapt resource value: 0x7F040011
 			public const int minus = 2130968593;
@@ -539,28 +539,28 @@ namespace FlickCalc.Droid
 			public const int root = 2131034165;
 			
 			// aapt resource value: 0x7F050036
-			public const int start = 2131034166;
+			public const int selectedButton = 2131034166;
 			
 			// aapt resource value: 0x7F050037
-			public const int status_bar_latest_event_content = 2131034167;
+			public const int start = 2131034167;
 			
 			// aapt resource value: 0x7F050038
-			public const int tag_transition_group = 2131034168;
+			public const int status_bar_latest_event_content = 2131034168;
 			
 			// aapt resource value: 0x7F050039
-			public const int tag_unhandled_key_event_manager = 2131034169;
+			public const int tag_transition_group = 2131034169;
 			
 			// aapt resource value: 0x7F05003A
-			public const int tag_unhandled_key_listeners = 2131034170;
+			public const int tag_unhandled_key_event_manager = 2131034170;
 			
 			// aapt resource value: 0x7F05003B
-			public const int text = 2131034171;
+			public const int tag_unhandled_key_listeners = 2131034171;
 			
 			// aapt resource value: 0x7F05003C
-			public const int text2 = 2131034172;
+			public const int text = 2131034172;
 			
 			// aapt resource value: 0x7F05003D
-			public const int textView1 = 2131034173;
+			public const int text2 = 2131034173;
 			
 			// aapt resource value: 0x7F05003E
 			public const int time = 2131034174;
